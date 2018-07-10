@@ -62,7 +62,7 @@ var UserSchema = new Schema({
   salt: {
     type: String
   },
-  avatar: {
+  profileImageURL: {
     type: String,
     default: 'modules/users/client/img/profile/default.png'
   },
