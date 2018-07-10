@@ -39,31 +39,10 @@ module.exports = {
     clientSecret: process.env.FACEBOOK_SECRET || 'APP_SECRET',
     callbackURL: '/api/auth/facebook/callback'
   },
-  twitter: {
-    clientID: process.env.TWITTER_KEY || 'CONSUMER_KEY',
-    clientSecret: process.env.TWITTER_SECRET || 'CONSUMER_SECRET',
-    callbackURL: '/api/auth/twitter/callback'
-  },
   google: {
     clientID: process.env.GOOGLE_ID || 'APP_ID',
     clientSecret: process.env.GOOGLE_SECRET || 'APP_SECRET',
     callbackURL: '/api/auth/google/callback'
-  },
-  linkedin: {
-    clientID: process.env.LINKEDIN_ID || 'APP_ID',
-    clientSecret: process.env.LINKEDIN_SECRET || 'APP_SECRET',
-    callbackURL: '/api/auth/linkedin/callback'
-  },
-  github: {
-    clientID: process.env.GITHUB_ID || 'APP_ID',
-    clientSecret: process.env.GITHUB_SECRET || 'APP_SECRET',
-    callbackURL: '/api/auth/github/callback'
-  },
-  paypal: {
-    clientID: process.env.PAYPAL_ID || 'CLIENT_ID',
-    clientSecret: process.env.PAYPAL_SECRET || 'CLIENT_SECRET',
-    callbackURL: '/api/auth/paypal/callback',
-    sandbox: true
   },
   mailer: {
     from: process.env.MAILER_FROM || 'MAILER_FROM',
@@ -79,7 +58,7 @@ module.exports = {
   seedDB: {
     seed: process.env.MONGO_SEED === 'true' ? true : false,
     options: {
-      logResults: process.env.MONGO_SEED_LOG_RESULTS === 'false' ? false : true,
+      logResults: process.env.MONGO_SEED_LOG_RESULTS === 'true' ? true : false,
       seedUser: {
         username: process.env.MONGO_SEED_USER_USERNAME || 'user',
         provider: 'local',
@@ -93,9 +72,9 @@ module.exports = {
         username: process.env.MONGO_SEED_ADMIN_USERNAME || 'admin',
         provider: 'local',
         email: process.env.MONGO_SEED_ADMIN_EMAIL || 'admin@localhost.com',
-        firstName: 'Admin',
-        lastName: 'Local',
-        displayName: 'Admin Local',
+        firstName: 'System',
+        lastName: 'Admin',
+        displayName: 'System Admin',
         roles: ['user', 'admin']
       }
     }
