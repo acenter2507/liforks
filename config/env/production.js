@@ -2,13 +2,13 @@
 
 module.exports = {
   secure: {
-    ssl: true,
+    ssl: false,
     privateKey: './config/sslcerts/key.pem',
     certificate: './config/sslcerts/cert.pem'
   },
-  port: process.env.PORT || 8443,
+  port: process.env.PORT || 3000,
   db: {
-    uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/mean',
+    uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/liforks',
     options: {
       user: '',
       pass: ''
@@ -79,7 +79,7 @@ module.exports = {
   seedDB: {
     seed: process.env.MONGO_SEED === 'true' ? true : false,
     options: {
-      logResults: process.env.MONGO_SEED_LOG_RESULTS === 'false' ? false : true,
+      logResults: process.env.MONGO_SEED_LOG_RESULTS === 'true' ? true : false,
       seedUser: {
         username: process.env.MONGO_SEED_USER_USERNAME || 'user',
         provider: 'local',
@@ -93,9 +93,9 @@ module.exports = {
         username: process.env.MONGO_SEED_ADMIN_USERNAME || 'admin',
         provider: 'local',
         email: process.env.MONGO_SEED_ADMIN_EMAIL || 'admin@localhost.com',
-        firstName: 'Admin',
-        lastName: 'Local',
-        displayName: 'Admin Local',
+        firstName: 'System',
+        lastName: 'Admin',
+        displayName: 'System Admin',
         roles: ['user', 'admin']
       }
     }

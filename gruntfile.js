@@ -21,8 +21,18 @@ module.exports = function (grunt) {
       dev: {
         NODE_ENV: 'development'
       },
+      seed_dev: {
+        NODE_ENV: 'development',
+        MONGO_SEED: 'true',
+        MONGO_SEED_LOG_RESULTS: 'true'
+      },
       prod: {
         NODE_ENV: 'production'
+      },
+      seed_prod: {
+        NODE_ENV: 'production',
+        MONGO_SEED: 'true',
+        MONGO_SEED_LOG_RESULTS: 'true'
       }
     },
     watch: {
@@ -242,6 +252,23 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-protractor-coverage');
 
   // Make sure upload directory exists
+  grunt.task.registerTask('mkdir:lib', 'Task that makes sure copy source custom to lib', function () {
+    // Get the callback
+    var done = this.async();
+
+    // grunt.file.mkdir(path.normalize(__dirname + '/public/lib/other-libraries'));
+
+    // // Copy angular-locale_ja-jp.min.js
+    // grunt.file.copy(path.normalize(__dirname + '/scripts/custom-source/angular-locale_ja-jp.min.js'), path.normalize(__dirname + '/public/lib/other-libraries/angular-locale_ja-jp.min.js'));
+    // // Copy japanese-holidays.min.js
+    // grunt.file.copy(path.normalize(__dirname + '/scripts/custom-source/japanese-holidays.min.js'), path.normalize(__dirname + '/public/lib/other-libraries/japanese-holidays.min.js'));
+    // // Copy angular-bootstrap-calendar-tpls.js
+    // grunt.file.copy(path.normalize(__dirname + '/scripts/custom-source/angular-bootstrap-calendar-tpls.js'), path.normalize(__dirname + '/public/lib/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.js'));
+    done();
+  });
+
+
+  // Make sure upload directory exists
   grunt.task.registerTask('mkdir:upload', 'Task that makes sure upload directory exists.', function () {
     // Get the callback
     var done = this.async();
@@ -312,10 +339,12 @@ module.exports = function (grunt) {
 
   // Run the project in development mode
   grunt.registerTask('default', ['env:dev', 'lint', 'mkdir:upload', 'copy:localConfig', 'concurrent:default']);
-
+  // Run the project in development mode and seed db
+  grunt.registerTask('seed_dev', ['env:seed', 'lint', 'mkdir:lib', 'mkdir:upload', 'copy:localConfig', 'concurrent:default']);
   // Run the project in debug mode
   grunt.registerTask('debug', ['env:dev', 'lint', 'mkdir:upload', 'copy:localConfig', 'concurrent:debug']);
-
   // Run the project in production mode
   grunt.registerTask('prod', ['build', 'env:prod', 'mkdir:upload', 'copy:localConfig', 'concurrent:default']);
+  // Run the project in production mode
+  grunt.registerTask('seed_prod', ['build', 'env:seed_prod', 'mkdir:lib', 'mkdir:upload', 'copy:localConfig', 'concurrent:default']);
 };

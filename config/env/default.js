@@ -2,8 +2,8 @@
 
 module.exports = {
   app: {
-    title: 'MEAN.JS',
-    description: 'Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js',
+    title: 'LIFORKシステム構築',
+    description: 'LIFORKシステム',
     keywords: 'mongodb, express, angularjs, node.js, mongoose, passport',
     googleAnalyticsTrackingID: process.env.GOOGLE_ANALYTICS_TRACKING_ID || 'GOOGLE_ANALYTICS_TRACKING_ID'
   },
@@ -22,19 +22,17 @@ module.exports = {
     secure: false
   },
   // sessionSecret should be changed for security measures and concerns
-  sessionSecret: process.env.SESSION_SECRET || 'MEAN',
+  sessionSecret: process.env.SESSION_SECRET || '5931TCenter',
   // sessionKey is set to the generic sessionId key used by PHP applications
   // for obsecurity reasons
-  sessionKey: 'sessionId',
+  sessionKey: '5931TCenter',
   sessionCollection: 'sessions',
   logo: 'modules/core/client/img/brand/logo.png',
   favicon: 'modules/core/client/img/brand/favicon.ico',
   uploads: {
     profileUpload: {
       dest: './modules/users/client/img/profile/uploads/', // Profile upload destination path
-      limits: {
-        fileSize: 1*1024*1024 // Max file size in bytes (1 MB)
-      }
+      limits: { fileSize: 5 * 1024 * 1024 } // Max file size in bytes (1 MB) 
     }
   }
 };
