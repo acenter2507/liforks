@@ -340,7 +340,7 @@ module.exports = function (grunt) {
   // Run the project in development mode
   grunt.registerTask('default', ['env:dev', 'lint', 'mkdir:upload', 'copy:localConfig', 'concurrent:default']);
   // Run the project in development mode and seed db
-  grunt.registerTask('seed_dev', ['env:seed', 'lint', 'mkdir:lib', 'mkdir:upload', 'copy:localConfig', 'concurrent:default']);
+  grunt.registerTask('seed_dev', ['env:seed_dev', 'lint', 'mkdir:lib', 'mkdir:upload', 'copy:localConfig', 'concurrent:default']);
   // Run the project in debug mode
   grunt.registerTask('debug', ['env:dev', 'lint', 'mkdir:upload', 'copy:localConfig', 'concurrent:debug']);
   // Run the project in production mode
